@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
+            AnchorPane.topAnchor="0"
+            AnchorPane.bottomAnchor="0"
+            AnchorPane.leftAnchor="0"
+            AnchorPane.rightAnchor="0">
+    
+    <stylesheets>
+        <URL value="@style.css"/>
+    </stylesheets>
+
+    <children>
+        
+        <TabPane 
+            scaleShape="true" 
+            AnchorPane.topAnchor="0"
+            AnchorPane.bottomAnchor="0"
+            AnchorPane.leftAnchor="0"
+            AnchorPane.rightAnchor="0" tabClosingPolicy="UNAVAILABLE" >
+            
+            <Tab text="Discours">
+                <VBox>
+                    <ToolBar>
+                        <Region styleClass="spacer" />
+                        <HBox styleClass="segmented-button-bar">
+                            <Button text="Ajouter" onAction="#handleAddTalk" />
+                            <Button text="Tout effacer" onAction="#handleClearTalks" />
+                        </HBox>
+                    </ToolBar>
+                    <ScrollPane fitToWidth="true">
+                        <VBox fx:id="talks"></VBox>
+                    </ScrollPane>
+                </VBox>
+            </Tab>
+            
+            
+            <Tab text="Listes">
+                <VBox>
+                    <ToolBar>
+                        <Region styleClass="spacer" />
+                        <HBox styleClass="segmented-button-bar">
+                            <Button text="Ajouter" onAction="#handleAddSection" />
+                            <Button text="Tout effacer" onAction="#handleClearSections" />
+                        </HBox>
+                    </ToolBar>
+                    <ScrollPane fitToWidth="true">
+                        <VBox fx:id="sections"></VBox>
+                    </ScrollPane>
+                </VBox>
+            </Tab>
+            
+            <Tab text="Détails">
+                <view.editor.details.Details fx:id="details"></view.editor.details.Details>
+            </Tab>
+            
+            <Tab text="Opérations">
+                <GridPane alignment="CENTER"
+                          hgap="10"
+                          vgap="10">
+                    
+                    <Button text="Sauvegarder" onAction="#handleSave" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <Button text="Charger" onAction="#handleLoad" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    
+                    <HBox GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2" alignment="CENTER" >
+                        <Button text="Lancer la présentation" onAction="#handleStart"  />
+                    </HBox>
+                </GridPane>
+            </Tab>
+            
+        </TabPane>
+    </children>
+</AnchorPane>
