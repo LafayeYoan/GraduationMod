@@ -4,10 +4,7 @@ import java.util.Calendar;
 import model.image.Image;
 import model.serializable.XMLSerializable;
 
-/**
- *
- * @author Adrien Castex
- */
+
 public class Details implements XMLSerializable
 {
     public static final String YEAR_SYMBOL = "%Y";

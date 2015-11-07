@@ -5,10 +5,7 @@ import model.image.LocalImage;
 import model.image.Image;
 import java.io.File;
 
-/**
- *
- * @author Adrien Castex
- */
+
 public class Student implements XMLSerializable
 {
     public Student(String name, String firstName, Image picture)

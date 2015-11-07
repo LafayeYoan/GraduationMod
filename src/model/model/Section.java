@@ -4,10 +4,7 @@ import model.serializable.XMLSerializable;
 import java.util.Collection;
 import java.util.LinkedList;
 
-/**
- *
- * @author Adrien Castex
- */
+
 public class Section implements XMLSerializable
 {
     public Section(String name)

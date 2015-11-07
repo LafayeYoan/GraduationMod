@@ -3,10 +3,7 @@ package controller;
 import java.awt.GraphicsEnvironment;
 import view.editor.window.EditorWindow;
 
-/**
- *
- * @author Adrien Castex
- */
+
 public class Graduation
 {
     /**

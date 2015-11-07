@@ -14,10 +14,7 @@ import javafx.stage.FileChooser;
 import model.image.LocalImage;
 import view.FxmlElement;
 
-/**
- *
- * @author Adrien Castex
- */
+
 public class Details extends FxmlElement
 {
     public Details()

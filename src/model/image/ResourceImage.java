@@ -7,10 +7,6 @@ import java.io.InputStream;
 import java.math.BigInteger;
 import javax.imageio.ImageIO;
 
-/**
- *
- * @author Adrien Castex
- */
 public class ResourceImage extends Image
 {
     public ResourceImage(byte[] data)

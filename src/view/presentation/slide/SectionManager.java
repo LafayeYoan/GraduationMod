@@ -14,10 +14,6 @@ import model.model.Section;
 import model.model.Student;
 import view.presentation.Drawer;
 
-/**
- *
- * @author Adrien Castex
- */
 public class SectionManager extends Drawer<Collection<model.model.Section>>
 {
     public SectionManager(Collection<Section> obj, JFrame frame, int nb)

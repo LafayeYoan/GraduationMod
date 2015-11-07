@@ -7,10 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 
-/**
- *
- * @author Adrien Castex
- */
+
 public abstract class FxmlElement extends AnchorPane implements Initializable
 {
     public FxmlElement(String fxmlPath)

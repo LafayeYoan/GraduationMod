@@ -15,10 +15,7 @@ import view.presentation.slide.SectionManager;
 import view.presentation.slide.Talk;
 import view.presentation.slide.Text;
 
-/**
- *
- * @author Adrien Castex
- */
+
 public class PresentationWindow extends JFrame implements KeyListener
 {
     public PresentationWindow(ModelCollection mc)

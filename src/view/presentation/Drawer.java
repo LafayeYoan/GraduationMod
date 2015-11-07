@@ -13,10 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import view.presentation.window.PresentationWindow;
 
-/**
- *
- * @author Adrien Castex
- */
+
 public abstract class Drawer<T>
 {
     public Drawer(T obj, JFrame frame)

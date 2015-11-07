@@ -17,10 +17,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import view.FxmlElement;
 
-/**
- *
- * @author Adrien Castex
- */
+
 public class Talk extends FxmlElement
 {
     public Talk(EventHandler<ActionEvent> onUp, EventHandler<ActionEvent> onDown)

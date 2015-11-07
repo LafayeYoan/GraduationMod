@@ -6,10 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Adrien Castex
- */
+
 public abstract class FxmlRunner extends Application
 {
     protected abstract String getFxmlPath();

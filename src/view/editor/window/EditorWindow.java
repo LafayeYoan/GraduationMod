@@ -23,8 +23,6 @@ import view.presentation.window.PresentationWindow;
 
 /**
  * FXML Controller class
- *
- * @author Adrien Castex
  */
 public class EditorWindow extends FxmlRunner implements Initializable
 {

@@ -10,10 +10,7 @@ import javax.swing.JFrame;
 import view.presentation.Drawer;
 import static view.presentation.slide.Text.MARGIN;
 
-/**
- *
- * @author Adrien Castex
- */
+
 public class Talk extends Drawer<model.model.Talk>
 {
     public Talk(model.model.Talk obj, JFrame frame)

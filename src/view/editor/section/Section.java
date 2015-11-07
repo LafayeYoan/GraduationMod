@@ -22,10 +22,7 @@ import javafx.scene.paint.Paint;
 import javafx.stage.DirectoryChooser;
 import view.FxmlElement;
 
-/**
- *
- * @author Adrien Castex
- */
+
 public class Section extends FxmlElement
 {
     public Section(EventHandler<ActionEvent> onUp, EventHandler<ActionEvent> onDown)

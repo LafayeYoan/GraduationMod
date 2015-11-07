@@ -3,10 +3,7 @@ package model.model;
 import model.serializable.XMLSerializable;
 import model.image.Image;
 
-/**
- *
- * @author Adrien Castex
- */
+
 public class Talk implements XMLSerializable
 {
     public Talk(String title, String text, Image picture)

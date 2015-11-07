@@ -7,10 +7,7 @@ import java.util.TimerTask;
 import javax.swing.JFrame;
 import view.presentation.Drawer;
 
-/**
- *
- * @author Adrien Castex
- */
+
 public class Text extends Drawer<String>
 {
     public Text(String obj, JFrame frame)

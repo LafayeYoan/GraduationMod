@@ -7,10 +7,7 @@ import java.math.BigInteger;
 import java.util.Collection;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-/**
- *
- * @author Adrien Castex
- */
+
 public abstract class Image implements BinarySerializable
 {
     public Image()
