@@ -7,18 +7,20 @@ import java.util.LinkedList;
 
 public class Section implements XMLSerializable
 {
-    public Section(String name)
+    public Section(String name, boolean positionLeft)
     {
         this.name = name;
+        this.positionLeft = positionLeft;
         this.students = new LinkedList<>();
     }
     
     public Collection<Student> students;
     public String name;
+    public boolean positionLeft;
     
     public static Section createDefault()
     {
-        return new Section("Informatique");
+        return new Section("Informatique", true);
     }
     
     public void addStudent(Student student)
@@ -47,6 +49,8 @@ public class Section implements XMLSerializable
                 .reduce("", (s1,s2) -> s1 + s2);
         
         xml += "<name>" + name + "</name>";
+        
+        xml += "<positionLeft>" + positionLeft + "</positionLeft>";
         
         xml += "</section>";
         

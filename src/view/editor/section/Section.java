@@ -53,6 +53,8 @@ public class Section extends FxmlElement
     @FXML private TextField path;
     @FXML private Label nbStudents;
     @FXML private TitledPane bigTP;
+    @FXML private Button leftBtn;
+    @FXML private Button rightBtn;
     
     public model.model.Section getSection()
     {
@@ -65,6 +67,11 @@ public class Section extends FxmlElement
         updateStudents(section.students);
         title.setText(section.name);
         bigTP.setText(section.name);
+        if(section.positionLeft){
+            leftBtn.fire();
+        }else{
+            rightBtn.fire();
+        }
         path.setText(section.students.isEmpty() ? "" : section.students.size() + " étudiants en mémoire");
     }
 
@@ -72,6 +79,8 @@ public class Section extends FxmlElement
     public void resize(double width, double height)
     {
         super.resize(width, height);
+        leftBtn.setLayoutX(width - 200);
+        rightBtn.setLayoutX(width - 140);
         upBtn.setLayoutX(width - 80);
         downBtn.setLayoutX(width - 55);
         removeBtn.setLayoutX(width - 30);
@@ -121,7 +130,18 @@ public class Section extends FxmlElement
         section.name = title.getText();
         bigTP.setText(section.name);
     }
-    
+    @FXML protected void handleIsLeft(ActionEvent event)
+    {
+        leftBtn.setStyle("-fx-base: #a4a4a4;");
+        rightBtn.setStyle("");
+        section.positionLeft = true;
+    }
+    @FXML protected void handleIsRight(ActionEvent event)
+    {
+        rightBtn.setStyle("-fx-base: #a4a4a4;");
+        leftBtn.setStyle("");
+        section.positionLeft = false;
+    }
     @FXML protected void handleUp(ActionEvent event)
     {
         onUp.handle(new ActionEvent(this, event.getTarget()));

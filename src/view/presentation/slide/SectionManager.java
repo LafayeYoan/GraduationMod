@@ -67,8 +67,7 @@ public class SectionManager extends Drawer<Collection<model.model.Section>>
     protected InnerSection getInnerSection(int listIndex)
     {
         if(listIndex < 0 || listIndex >= indexes.length || indexes[listIndex] >= sections.size())
-            return null;
-        
+            return null;        
         InnerSection is = sections.get(indexes[listIndex]);
         
         return is;

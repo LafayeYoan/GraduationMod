@@ -112,6 +112,16 @@ public class ModelCollection
                 .findFirst()
                 .orElse("");
     }
+    
+    protected static boolean extractBoolean(Collection<Node> nodes, String tagName)
+    {
+        String value = nodes.stream()
+                .filter(n -> tagName.toLowerCase().equals(n.getNodeName().toLowerCase()))
+                .map(Node::getTextContent)
+                .findFirst()
+                .orElse("");
+        return value.equalsIgnoreCase("true");
+    }
     protected static Image extractImage(Collection<Node> nodes, String tagName)
     {
         return nodes.stream()
@@ -193,7 +203,7 @@ public class ModelCollection
                 .map(ModelCollection::toCollection)
                 .map(ns ->
                 {
-                    Section s = new Section(extractString(ns, "name"));
+                    Section s = new Section(extractString(ns, "name"),extractBoolean(ns, "positionLeft"));
                     s.addStudents(extractStudents(ns));
                     return s;
                 })

@@ -8,6 +8,9 @@
 
 <fx:root type="javafx.scene.layout.AnchorPane"
          xmlns:fx="http://javafx.com/fxml/1">
+    <fx:define>
+        <ToggleGroup fx:id="positionTG"/>
+    </fx:define>
     <children>
         <TitledPane fx:id="bigTP" HBox.hgrow="ALWAYS" 
                     expanded="false"
@@ -24,8 +27,6 @@
                             <TextField fx:id="title" onKeyReleased="#handleTitleChanged"  />
                         </content>
                     </TitledPane>
-
-
                     <TitledPane collapsible="false" >
                         <text>Fichiers</text>
                         <content>
@@ -40,6 +41,8 @@
                 </VBox>
             </content>
         </TitledPane>
+        <Button layoutY="0" fx:id="leftBtn" onAction="#handleIsLeft" text="Gauche" />
+        <Button layoutY="0" fx:id="rightBtn" onAction="#handleIsRight" text="Droite" />
         <Button layoutY="0" fx:id="upBtn" onAction="#handleUp" text="↑" />
         <Button layoutY="0" fx:id="downBtn" onAction="#handleDown" text="↓" />
         <Button layoutY="0" fx:id="removeBtn" onAction="#handleRemove" text="X" />

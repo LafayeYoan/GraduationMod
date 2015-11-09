@@ -157,7 +157,7 @@ public class PresentationWindow extends JFrame implements KeyListener
                 subSectionMove(0);
                 break;
                 
-            case KeyEvent.VK_Z: // Right section
+            case KeyEvent.VK_P: // Right section
                 subSectionMove(1);
                 break;
                 
