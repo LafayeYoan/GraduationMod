@@ -20,11 +20,18 @@ public class SectionManager extends Drawer<Collection<model.model.Section>>
     {
         super(obj, frame);
         
-        sections = new ArrayList<>(obj.stream().map(InnerSection::new).collect(Collectors.toList()));
-        indexes = new int[nb];
-        
-        for(currentIndex = 0; currentIndex < nb; currentIndex++)
-            indexes[currentIndex] = currentIndex;
+        ArrayList <InnerSection> sections = new ArrayList<>(obj.stream().map(InnerSection::new).collect(Collectors.toList()));
+        sectionsLeft = new ArrayList<>();
+        sectionsRight = new ArrayList<>();
+        sections.stream().forEach((InnerSection s) -> {
+            if(s.section.positionLeft){
+                sectionsLeft.add(s);
+            }else{
+                sectionsRight.add(s);
+            }
+        });
+        currentIndexLeft= 0;
+        currentIndexRight = 0;
     }
     
     protected static class InnerSection
@@ -60,17 +67,28 @@ public class SectionManager extends Drawer<Collection<model.model.Section>>
         }
     }
     
-    private final ArrayList<InnerSection> sections;
-    private final int[] indexes;
-    private int currentIndex;
+    private final ArrayList<InnerSection> sectionsLeft;
+    private final ArrayList<InnerSection> sectionsRight;
+    private int currentIndexLeft;
+    private int currentIndexRight;
     
     protected InnerSection getInnerSection(int listIndex)
     {
-        if(listIndex < 0 || listIndex >= indexes.length || indexes[listIndex] >= sections.size())
-            return null;        
-        InnerSection is = sections.get(indexes[listIndex]);
-        
-        return is;
+        if(listIndex == 0){
+            if (currentIndexLeft < sectionsLeft.size()){
+                return sectionsLeft.get(currentIndexLeft);
+            }
+            else{
+                return null;
+            }
+        }else{
+            if (currentIndexRight < sectionsRight.size()){
+                return sectionsRight.get(currentIndexRight);
+            }
+            else{
+                return null;
+            }
+        }
     }
     
     /**************************************************************************
@@ -89,8 +107,8 @@ public class SectionManager extends Drawer<Collection<model.model.Section>>
     
     protected void draw(Graphics g, int index, InnerSection is)
     {
-        int locationX = (g.getClipBounds().width - MARGIN * 2) / indexes.length * index + MARGIN;
-        int locationXLimit = (g.getClipBounds().width - MARGIN * 2) / indexes.length * (index + 1) + MARGIN;
+        int locationX = (g.getClipBounds().width - MARGIN * 2) / 2 * index + MARGIN;
+        int locationXLimit = (g.getClipBounds().width - MARGIN * 2) / 2 * (index + 1) + MARGIN;
         int centerX = (locationXLimit + locationX) / 2;
         
         int IMAGE_H = (int)(500 / 1080f * g.getClipBounds().height);
@@ -139,7 +157,7 @@ public class SectionManager extends Drawer<Collection<model.model.Section>>
     {
         globalDrawBefore(g);
         
-        IntStream.range(0, indexes.length)
+        IntStream.range(0, 2)
                 .mapToObj(i -> new Pair<Integer, InnerSection>(i, getInnerSection(i)))
                 .filter(p -> p.getValue() != null)
                 .forEach(p -> draw(g, p.getKey(), p.getValue()));
@@ -150,7 +168,7 @@ public class SectionManager extends Drawer<Collection<model.model.Section>>
     @Override
     public boolean isEnded()
     {
-        return IntStream.range(0, indexes.length)
+        return IntStream.range(0, 2)
                 .mapToObj(this::getInnerSection)
                 .allMatch(s -> s == null);
     }
@@ -163,10 +181,17 @@ public class SectionManager extends Drawer<Collection<model.model.Section>>
         {
             while(!is.hasMoreStudent())
             {
-                indexes[listIndex] = currentIndex++;
-                if(indexes[listIndex] >= sections.size())
-                    return;
-                is = sections.get(indexes[listIndex]);
+                if(listIndex == 0){
+                    currentIndexLeft++;
+                    if(currentIndexLeft >= sectionsLeft.size())
+                        return;
+                    is = sectionsLeft.get(currentIndexLeft);
+                }else{
+                    currentIndexRight++;
+                    if(currentIndexRight >= sectionsRight.size())
+                        return;
+                    is = sectionsRight.get(currentIndexRight);
+                }
             }
             
             is.nextStudent();
