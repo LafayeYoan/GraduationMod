@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -79,7 +80,7 @@ public class Section extends FxmlElement
         }else{
             rightBtn.fire();
         }
-        path.setText(section.students.isEmpty() ? "" : section.students.size() + " étudiants en mémoire");        
+        path.setText(section.students.isEmpty() ? "" : section.students.size()-2 + " étudiants en mémoire");        
     }
 
     @Override
@@ -100,8 +101,8 @@ public class Section extends FxmlElement
     }
     protected void updateStudents(Collection<Student> students)
     {
-        String plur = students.size() > 1 ? "s" : "";
-        nbStudents.setText(students.size() + " étudiant" + plur + " trouvé" + plur + "!");
+        String plur = students.size()-2 > 1 ? "s" : "";
+        nbStudents.setText((students.size()-2 <0  ? students.size() : students.size()-2) + " étudiant" + plur + " trouvé" + plur + "!");
 
         if(students.isEmpty())
             nbStudents.setTextFill(Paint.valueOf("red"));
@@ -118,7 +119,13 @@ public class Section extends FxmlElement
                                         .map(Student::createFromFile)
                                         .collect(Collectors.toList());
         Collections.sort((List<Student>) students);
-        return students;
+        
+        //Add IntroductionText and ConclusionText as student
+        Collection<Student> finalStudents = new LinkedList<>();
+        finalStudents.add(new Student(model.model.Section.SECTION_INTRODUCTION_KEY, null, null));
+        finalStudents.addAll(students);
+        finalStudents.add(new Student(model.model.Section.SECTION_CONCLUSION_KEY, null, null));
+        return finalStudents;
     }
     
     @FXML protected void handleBrowse(ActionEvent event)

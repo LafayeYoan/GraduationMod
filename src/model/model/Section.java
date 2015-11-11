@@ -21,6 +21,8 @@ public class Section implements XMLSerializable
     public boolean positionLeft;
     public String introductionText;
     public String conclusionText;
+    public static final String SECTION_INTRODUCTION_KEY = "0x0000";
+    public static final String SECTION_CONCLUSION_KEY = "0x0001";
     
     public static Section createDefault()
     {

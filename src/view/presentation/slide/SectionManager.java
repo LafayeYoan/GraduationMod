@@ -41,11 +41,13 @@ public class SectionManager extends Drawer<Collection<model.model.Section>>
             this.section = section;
             this.students = section.students.iterator();
             this.currentStudent = null;
+            this.cclShowed = false;
         }
         
         private Section section;
         private Iterator<Student> students;
         private Student currentStudent;
+        public boolean cclShowed ;
         
         public Section getSection()
         {
@@ -107,6 +109,60 @@ public class SectionManager extends Drawer<Collection<model.model.Section>>
     
     protected void draw(Graphics g, int index, InnerSection is)
     {
+        //Introduction Student
+        if(is.getStudent().name.equals(Section.SECTION_INTRODUCTION_KEY)){
+            int locationX = (g.getClipBounds().width - MARGIN * 2) / 2 * index + MARGIN;
+            int locationXLimit = (g.getClipBounds().width - MARGIN * 2) / 2 * (index + 1) + MARGIN;
+            int centerX = (locationXLimit + locationX) / 2;
+
+            int GAP_TITLE_TOP = (int)(20 / 1080f * g.getClipBounds().height) - MARGIN;
+
+            int y = MARGIN + 10 + (int)(300 / 1080f * g.getClipBounds().height);
+
+            g.setFont(g.getFont().deriveFont(75f / 1920 * g.getClipBounds().width));
+            g.setColor(new Color(255, 255, 255));
+
+            int yi = GAP_TITLE_TOP;
+            int gh = g.getFontMetrics().getHeight();
+            for(String s : splitToFit(is.getSection().name, g, 0, locationXLimit - locationX))
+            {
+                g.drawString(s, (int)(centerX - g.getFontMetrics().getStringBounds(s, g).getWidth() / 2), yi + gh);
+                yi += gh + TEXT_ROW_SPACE;
+            }
+
+            g.setColor(new Color(0, 0, 0));
+            String text = is.getSection().introductionText;
+            g.drawString(text, (int)(centerX - g.getFontMetrics().getStringBounds(text, g).getWidth() / 2), y + MARGIN + g.getFontMetrics().getHeight() - (3* MARGIN));
+            return;
+        }
+        
+        //Conclusion student
+        if(is.getStudent().name.equals(Section.SECTION_CONCLUSION_KEY)){
+            int locationX = (g.getClipBounds().width - MARGIN * 2) / 2 * index + MARGIN;
+            int locationXLimit = (g.getClipBounds().width - MARGIN * 2) / 2 * (index + 1) + MARGIN;
+            int centerX = (locationXLimit + locationX) / 2;
+
+            int GAP_TITLE_TOP = (int)(20 / 1080f * g.getClipBounds().height) - MARGIN;
+
+            int y = MARGIN + 10 + (int)(300 / 1080f * g.getClipBounds().height);
+
+            g.setFont(g.getFont().deriveFont(75f / 1920 * g.getClipBounds().width));
+            g.setColor(new Color(255, 255, 255));
+
+            int yi = GAP_TITLE_TOP;
+            int gh = g.getFontMetrics().getHeight();
+            for(String s : splitToFit(is.getSection().name, g, 0, locationXLimit - locationX))
+            {
+                g.drawString(s, (int)(centerX - g.getFontMetrics().getStringBounds(s, g).getWidth() / 2), yi + gh);
+                yi += gh + TEXT_ROW_SPACE;
+            }
+
+            g.setColor(new Color(0, 0, 0));
+            String text = is.getSection().conclusionText;
+            g.drawString(text, (int)(centerX - g.getFontMetrics().getStringBounds(text, g).getWidth() / 2), y + MARGIN + g.getFontMetrics().getHeight() - (3* MARGIN));
+            return;
+        }
+        
         int locationX = (g.getClipBounds().width - MARGIN * 2) / 2 * index + MARGIN;
         int locationXLimit = (g.getClipBounds().width - MARGIN * 2) / 2 * (index + 1) + MARGIN;
         int centerX = (locationXLimit + locationX) / 2;
@@ -180,8 +236,8 @@ public class SectionManager extends Drawer<Collection<model.model.Section>>
         if(is != null)
         {
             while(!is.hasMoreStudent())
-            {
-                if(listIndex == 0){
+            {                
+                if(listIndex == 0){                    
                     currentIndexLeft++;
                     if(currentIndexLeft >= sectionsLeft.size())
                         return;
@@ -191,7 +247,7 @@ public class SectionManager extends Drawer<Collection<model.model.Section>>
                     if(currentIndexRight >= sectionsRight.size())
                         return;
                     is = sectionsRight.get(currentIndexRight);
-                }
+                }                
             }
             
             is.nextStudent();
