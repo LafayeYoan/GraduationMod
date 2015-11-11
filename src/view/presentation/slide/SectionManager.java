@@ -112,15 +112,15 @@ public class SectionManager extends Drawer<Collection<model.model.Section>>
         int centerX = (locationXLimit + locationX) / 2;
         
         int IMAGE_H = (int)(500 / 1080f * g.getClipBounds().height);
-        int GAP_IMAGE_TEXT = (int)(20 / 1080f * g.getClipBounds().height);
-        int GAP_TITLE_TOP = (int)(20 / 1080f * g.getClipBounds().height);
+        int GAP_IMAGE_TEXT = (int)(20 / 1080f * g.getClipBounds().height) - MARGIN;
+        int GAP_TITLE_TOP = (int)(20 / 1080f * g.getClipBounds().height) - MARGIN;
         
         int y = MARGIN + 10 + (int)(300 / 1080f * g.getClipBounds().height);
         
         g.setFont(g.getFont().deriveFont(75f / 1920 * g.getClipBounds().width));
         g.setColor(new Color(255, 255, 255));
         
-        int yi = MARGIN + GAP_TITLE_TOP;
+        int yi = GAP_TITLE_TOP;
         int gh = g.getFontMetrics().getHeight();
         for(String s : splitToFit(is.getSection().name, g, 0, locationXLimit - locationX))
         {
@@ -135,10 +135,10 @@ public class SectionManager extends Drawer<Collection<model.model.Section>>
             g.setColor(new Color(50, 50, 200));
 
             int w = (int)(IMAGE_RATIO * IMAGE_H);
-            g.drawImage(is.getStudent().picture.getImage(), centerX - w / 2, y, w, IMAGE_H, null);
+            g.drawImage(is.getStudent().picture.getImage(), centerX - w / 2, y - (3 * MARGIN), w, IMAGE_H, null);
             
             String fullName = is.getStudent().firstName + " " + is.getStudent().name.toUpperCase();
-            g.drawString(fullName, (int)(centerX - g.getFontMetrics().getStringBounds(fullName, g).getWidth() / 2), y + IMAGE_H + GAP_IMAGE_TEXT + g.getFontMetrics().getHeight());
+            g.drawString(fullName, (int)(centerX - g.getFontMetrics().getStringBounds(fullName, g).getWidth() / 2), y + IMAGE_H + GAP_IMAGE_TEXT + g.getFontMetrics().getHeight() - (3* MARGIN));
         }
         catch (IOException ex)
         { }
