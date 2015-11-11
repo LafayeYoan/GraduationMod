@@ -4,6 +4,9 @@ import model.model.Student;
 import java.io.File;
 import java.net.URL;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -108,12 +111,14 @@ public class Section extends FxmlElement
     
     private Collection<Student> extractFolder(File dir)
     {
-        return Stream.of(dir.listFiles())
-                .filter(File::exists)
-                .filter(File::isFile)
-                .filter(Student::isValid)
-                .map(Student::createFromFile)
-                .collect(Collectors.toList());
+        Collection<Student> students =  Stream.of(dir.listFiles())
+                                        .filter(File::exists)
+                                        .filter(File::isFile)
+                                        .filter(Student::isValid)
+                                        .map(Student::createFromFile)
+                                        .collect(Collectors.toList());
+        Collections.sort((List<Student>) students);
+        return students;
     }
     
     @FXML protected void handleBrowse(ActionEvent event)
@@ -166,5 +171,6 @@ public class Section extends FxmlElement
     @FXML protected void handleRemove(ActionEvent event)
     {
         ((Pane)this.getParent()).getChildren().remove(this);
-    }
+    }   
+    
 }

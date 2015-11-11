@@ -4,9 +4,10 @@ import model.serializable.XMLSerializable;
 import model.image.LocalImage;
 import model.image.Image;
 import java.io.File;
+import java.util.Comparator;
 
 
-public class Student implements XMLSerializable
+public class Student implements XMLSerializable,Comparable<Student>
 {
     public Student(String name, String firstName, Image picture)
     {
@@ -56,5 +57,20 @@ public class Student implements XMLSerializable
         xml += "</student>";
         
         return xml;
+    }
+    
+   /* public static Comparator<Student> StudentComparator = new Comparator<Student>(){
+        @Override
+        public int compare(Student s1, Student s2) {
+            
+        }
+    };*/
+
+    @Override
+    public int compareTo(Student t) {
+        if(this.name.toLowerCase().equals(t.name.toLowerCase()))
+                return this.firstName.toLowerCase().compareTo(t.firstName.toLowerCase());
+
+            return this.name.toLowerCase().compareTo(t.name.toLowerCase());
     }
 }
