@@ -27,13 +27,11 @@ public class Text extends Drawer<String>
     public void draw(Graphics g)
     {
         // get Window size + define (X,Y) for logos
-        Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        int max_height = (int)dimension.getHeight();
-        int max_width  = (int)dimension.getWidth();
-        int polytechX = max_height + MARGIN * 4;
-        int polytechY = max_width / 2 - MARGIN;
+        
+        int polytechX = getWindowHeight() + MARGIN * 4;
+        int polytechY = getWindowWidth() / 2 - MARGIN;
         int ucblX = MARGIN;
-        int ucblY = max_width / 2 - MARGIN;
+        int ucblY = getWindowWidth() / 2 - MARGIN;
         
         // Draw background image        
         g.drawImage(getBackgroundTopImage(), MARGIN, MARGIN / 2, g.getClipBounds().width - MARGIN * 2, (int)((getBackgroundTopImage().getHeight() / (double)getBackgroundTopImage().getWidth()) * g.getClipBounds().height) * 2 - MARGIN * 2, null);
