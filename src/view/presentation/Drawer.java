@@ -107,6 +107,9 @@ public abstract class Drawer<T>
     
     
     private static BufferedImage backgroundTopImage = null;
+    private static BufferedImage logoPolytechImage = null;
+    private static BufferedImage logoUCBLImage = null;
+    
     protected static BufferedImage getBackgroundTopImage()
     {
         if(backgroundTopImage == null)
@@ -118,5 +121,31 @@ public abstract class Drawer<T>
             { }
         
         return backgroundTopImage;
+    }
+    
+    protected static BufferedImage getLogoPolytechImage()
+    {
+        if(logoPolytechImage == null)
+            try
+            {
+                logoPolytechImage = ImageIO.read(Drawer.class.getClassLoader().getResourceAsStream("view/presentation/resources/logo_polytech.jpg"));
+            }
+            catch (IOException ex)
+            { }
+        
+        return logoPolytechImage;
+    }
+    
+    protected static BufferedImage getlogoUCBLImage()
+    {
+        if(logoUCBLImage == null)
+            try
+            {
+                logoUCBLImage = ImageIO.read(Drawer.class.getClassLoader().getResourceAsStream("view/presentation/resources/logo_quadri.jpg"));
+            }
+            catch (IOException ex)
+            { }
+        
+        return logoUCBLImage;
     }
 }
