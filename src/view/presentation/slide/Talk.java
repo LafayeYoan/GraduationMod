@@ -49,11 +49,12 @@ public class Talk extends Drawer<model.model.Talk>
         
         // Draw background image
         g.drawImage(getBackgroundTopImage(), MARGIN, MARGIN / 2, g.getClipBounds().width - MARGIN * 2, (int)((getBackgroundTopImage().getHeight() / (double)getBackgroundTopImage().getWidth()) * g.getClipBounds().height) * 2 - MARGIN * 2, null);
+        drawLogo(MARGIN, g);
         
         // Draw title
         g.setFont(g.getFont().deriveFont(200f / 1920 * g.getClipBounds().width));
         g.setColor(new Color(255, 255, 255, 255));
-        g.drawString(getObject().title, getCenter(g, getObject().title), 250);
+        g.drawString(getObject().title, getCenter(g, getObject().title), 150);
         
         // Draw left text
         g.setFont(g.getFont().deriveFont(75f / 1920 * g.getClipBounds().width));

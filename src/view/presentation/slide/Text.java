@@ -26,17 +26,9 @@ public class Text extends Drawer<String>
     @Override
     public void draw(Graphics g)
     {
-        // get Window size + define (X,Y) for logos
-        
-        int polytechX = getWindowHeight() + MARGIN * 4;
-        int polytechY = getWindowWidth() / 2 - MARGIN;
-        int ucblX = MARGIN;
-        int ucblY = getWindowWidth() / 2 - MARGIN;
-        
         // Draw background image        
         g.drawImage(getBackgroundTopImage(), MARGIN, MARGIN / 2, g.getClipBounds().width - MARGIN * 2, (int)((getBackgroundTopImage().getHeight() / (double)getBackgroundTopImage().getWidth()) * g.getClipBounds().height) * 2 - MARGIN * 2, null);
-        g.drawImage(getLogoPolytechImage(), polytechX, polytechY, g.getClipBounds().width / 4, (int)((getLogoPolytechImage().getHeight() / (double)getLogoPolytechImage().getWidth()) * g.getClipBounds().height) / 2, null);
-        g.drawImage(getlogoUCBLImage(), ucblX, ucblY, g.getClipBounds().width / 4, (int) ((getlogoUCBLImage().getHeight() / (double)getlogoUCBLImage().getWidth()) * g.getClipBounds().height) / 2, null);
+        drawLogo(MARGIN, g);
         
         // Draw text
         g.setColor(new Color(0, 0, 0, opacity));
