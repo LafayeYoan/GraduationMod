@@ -28,6 +28,12 @@
                         </content>
                     </TitledPane>
                     <TitledPane collapsible="false" >
+                        <text>Introduction de la Section</text>
+                        <content>
+                            <TextField fx:id="introductionText" onKeyReleased="#handleIntroChanged"/>
+                        </content>
+                    </TitledPane>
+                    <TitledPane collapsible="false" >
                         <text>Fichiers</text>
                         <content>
                             <HBox>
@@ -36,8 +42,13 @@
                             </HBox>
                         </content>
                     </TitledPane>
-
                     <Label fx:id="nbStudents"></Label>
+                    <TitledPane collapsible="false" >
+                        <text>Conclusion de la Section</text>
+                        <content>
+                            <TextField fx:id="conclusionText" onKeyReleased="#handleConclChanged"/>
+                        </content>
+                    </TitledPane>
                 </VBox>
             </content>
         </TitledPane>

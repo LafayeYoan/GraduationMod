@@ -203,7 +203,7 @@ public class ModelCollection
                 .map(ModelCollection::toCollection)
                 .map(ns ->
                 {
-                    Section s = new Section(extractString(ns, "name"),extractBoolean(ns, "positionLeft"));
+                    Section s = new Section(extractString(ns, "name"),extractString(ns,"introductionText"),extractString(ns,"conclusionText"),extractBoolean(ns, "positionLeft"));
                     s.addStudents(extractStudents(ns));
                     return s;
                 })

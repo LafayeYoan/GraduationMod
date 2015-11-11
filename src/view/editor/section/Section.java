@@ -51,6 +51,8 @@ public class Section extends FxmlElement
     @FXML private Button removeBtn;
     @FXML private TextField title;
     @FXML private TextField path;
+    @FXML private TextField conclusionText;
+    @FXML private TextField introductionText;
     @FXML private Label nbStudents;
     @FXML private TitledPane bigTP;
     @FXML private Button leftBtn;
@@ -67,12 +69,14 @@ public class Section extends FxmlElement
         updateStudents(section.students);
         title.setText(section.name);
         bigTP.setText(section.name);
+        introductionText.setText(section.introductionText);
+        conclusionText.setText(section.conclusionText);
         if(section.positionLeft){
             leftBtn.fire();
         }else{
             rightBtn.fire();
         }
-        path.setText(section.students.isEmpty() ? "" : section.students.size() + " étudiants en mémoire");
+        path.setText(section.students.isEmpty() ? "" : section.students.size() + " étudiants en mémoire");        
     }
 
     @Override
@@ -130,6 +134,15 @@ public class Section extends FxmlElement
         section.name = title.getText();
         bigTP.setText(section.name);
     }
+    @FXML protected void handleIntroChanged(KeyEvent event)
+    {
+        section.introductionText = introductionText.getText();
+    }
+    @FXML protected void handleConclChanged(KeyEvent event)
+    {
+        section.conclusionText = conclusionText.getText();
+    }
+    
     @FXML protected void handleIsLeft(ActionEvent event)
     {
         leftBtn.setStyle("-fx-base: #a4a4a4;");
