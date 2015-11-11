@@ -161,7 +161,7 @@ public abstract class Drawer<T>
     
     protected static boolean drawLogo(int margin, Graphics g) {
         int polytechX = getWindowHeight() + margin * 4;
-        int polytechY = getWindowWidth() / 2 - margin;
+        int polytechY = getWindowWidth() / 2 - (2* margin);
         int ucblX = margin;
         int ucblY = getWindowWidth() / 2 - margin;
         

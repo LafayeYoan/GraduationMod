@@ -59,7 +59,7 @@ public class Talk extends Drawer<model.model.Talk>
         // Draw left text
         g.setFont(g.getFont().deriveFont(75f / 1920 * g.getClipBounds().width));
         g.setColor(new Color(0, 0, 50, 255));
-        int y = MARGIN + 10 + 400;
+        int y = MARGIN + 10 + 200;
         int gh = g.getFontMetrics().getHeight();
         int ho = (int)g.getClipBounds().width / 2;
         for(String s : splitToFit(getObject().text, g, MARGIN + 10, ho))
@@ -71,9 +71,9 @@ public class Talk extends Drawer<model.model.Talk>
         // Draw image
         if(getImage() != null)
         {
-            int hom = ho - 2 * IMAGE_MARGIN;
+            int hom = ho - IMAGE_MARGIN;
             int imgh = (int)((getImage().getHeight() / (double)getImage().getWidth() * hom));
-            g.drawImage(getImage(), g.getClipBounds().width - MARGIN - hom, g.getClipBounds().height - MARGIN - imgh + offset, hom, imgh, null);
+            g.drawImage(getImage(), g.getClipBounds().width - MARGIN - hom, g.getClipBounds().height - 4 * MARGIN - imgh + offset, hom, imgh, null);
         }
     }
     
