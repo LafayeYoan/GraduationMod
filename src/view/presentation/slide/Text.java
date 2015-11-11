@@ -24,7 +24,7 @@ public class Text extends Drawer<String>
     public void draw(Graphics g)
     {
         // Draw background image
-        g.drawImage(getBackgroundTopImage(), MARGIN, MARGIN, g.getClipBounds().width - MARGIN * 2, (int)((getBackgroundTopImage().getHeight() / (double)getBackgroundTopImage().getWidth()) * g.getClipBounds().height) * 2 - MARGIN * 2, null);
+        g.drawImage(getBackgroundTopImage(), MARGIN, MARGIN / 2, g.getClipBounds().width - MARGIN * 2, (int)((getBackgroundTopImage().getHeight() / (double)getBackgroundTopImage().getWidth()) * g.getClipBounds().height) * 2 - MARGIN * 2, null);
         
         // Draw text
         g.setColor(new Color(0, 0, 0, opacity));

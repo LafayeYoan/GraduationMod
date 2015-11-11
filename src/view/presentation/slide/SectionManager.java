@@ -83,7 +83,9 @@ public class SectionManager extends Drawer<Collection<model.model.Section>>
     protected void globalDrawBefore(Graphics g)
     {
         // Draw background image
-        g.drawImage(getBackgroundTopImage(), MARGIN, MARGIN, g.getClipBounds().width - MARGIN * 2, (int)((((getBackgroundTopImage().getHeight() / (double)getBackgroundTopImage().getWidth()) * g.getClipBounds().height) * 2 - MARGIN * 2) / 2), null);
+        //TO REMOVE : 
+        //g.drawImage(getBackgroundTopImage(), MARGIN, MARGIN, g.getClipBounds().width - MARGIN * 2, (int)((((getBackgroundTopImage().getHeight() / (double)getBackgroundTopImage().getWidth()) * g.getClipBounds().height) * 2 - MARGIN * 2) / 2), null);
+        g.drawImage(getBackgroundTopImage(), MARGIN * 2, MARGIN / 2, g.getClipBounds().width - MARGIN * 4, (int)((((getBackgroundTopImage().getHeight() / (double)getBackgroundTopImage().getWidth()) * g.getClipBounds().height) * 4 - MARGIN * 4) / 2), null);
     }
     
     protected void draw(Graphics g, int index, InnerSection is)
