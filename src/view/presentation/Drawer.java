@@ -160,10 +160,10 @@ public abstract class Drawer<T>
     }
     
     protected static boolean drawLogo(int margin, Graphics g) {
-        int polytechX = getWindowHeight() + margin * 6;
-        int polytechY = getWindowWidth() / 2 - 10;
+        int polytechX = getWindowHeight();
+        int polytechY = getWindowWidth() / 2 + 90;
         int ucblX = margin;
-        int ucblY = getWindowWidth() / 2 - margin;
+        int ucblY = getWindowWidth() / 2 + margin;
         
         g.drawImage(getLogoPolytechImage(), polytechX, polytechY, g.getClipBounds().width / 6, (int)((getLogoPolytechImage().getHeight() / (double)getLogoPolytechImage().getWidth()) * g.getClipBounds().height) / 4, null);
         g.drawImage(getlogoUCBLImage(), ucblX, ucblY, g.getClipBounds().width / 4, (int) ((getlogoUCBLImage().getHeight() / (double)getlogoUCBLImage().getWidth()) * g.getClipBounds().height) / 2, null);
