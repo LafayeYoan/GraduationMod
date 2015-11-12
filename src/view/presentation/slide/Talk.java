@@ -73,7 +73,7 @@ public class Talk extends Drawer<model.model.Talk>
         {
             int hom = ho - IMAGE_MARGIN;
             int imgh = (int)((getImage().getHeight() / (double)getImage().getWidth() * hom));
-            g.drawImage(getImage(), g.getClipBounds().width - MARGIN - hom, g.getClipBounds().height - 4 * MARGIN - imgh + offset, hom, imgh, null);
+            g.drawImage(getImage(), g.getClipBounds().width - MARGIN - hom, g.getClipBounds().height - y + offset, hom, imgh, null);
         }
     }
     
