@@ -130,9 +130,13 @@ public class SectionManager extends Drawer<Collection<model.model.Section>>
                 yi += gh + TEXT_ROW_SPACE;
             }
 
+            yi = yi + y + MARGIN + gh - (3* MARGIN);
             g.setColor(new Color(0, 0, 0));
-            String text = is.getSection().introductionText;
-            g.drawString(text, (int)(centerX - g.getFontMetrics().getStringBounds(text, g).getWidth() / 2), y + MARGIN + g.getFontMetrics().getHeight() - (3* MARGIN));
+            for(String s : splitToFit(is.getSection().introductionText, g, 0, locationXLimit - locationX))
+            {
+                g.drawString(s, (int)(centerX - g.getFontMetrics().getStringBounds(s, g).getWidth() / 2), yi + gh - (2 * MARGIN));
+                yi += gh + TEXT_ROW_SPACE;
+            }
             return;
         }
         
@@ -157,9 +161,13 @@ public class SectionManager extends Drawer<Collection<model.model.Section>>
                 yi += gh + TEXT_ROW_SPACE;
             }
 
+            yi = yi + y + MARGIN + gh - (3* MARGIN);
             g.setColor(new Color(0, 0, 0));
-            String text = is.getSection().conclusionText;
-            g.drawString(text, (int)(centerX - g.getFontMetrics().getStringBounds(text, g).getWidth() / 2), y + MARGIN + g.getFontMetrics().getHeight() - (3* MARGIN));
+            for(String s : splitToFit(is.getSection().conclusionText, g, 0, locationXLimit - locationX))
+            {
+                g.drawString(s, (int)(centerX - g.getFontMetrics().getStringBounds(s, g).getWidth() / 2), yi + gh - (2 * MARGIN));
+                yi += gh + TEXT_ROW_SPACE;
+            }
             return;
         }
         
