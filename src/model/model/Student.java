@@ -24,9 +24,9 @@ public class Student implements XMLSerializable,Comparable<Student>
     {
         String[] names = file.getName().split("\\.");
         return names.length >= 3
-                 && names[0].matches("^[0-9]+$")
-                 && names[1].matches("^[a-zA-Z\\-\\_]+$")
-                 && names[2].matches("^[a-zA-Z\\-\\_]+$");
+                 && names[0].matches("^[0-9]+$");
+                 //&& names[1].matches("^[a-zA-Z\\-\\_]+$")
+                 //&& names[2].matches("^[a-zA-Z\\-\\_]+$");
     }
     
     public static Student createFromFile(File file)
