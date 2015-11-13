@@ -160,13 +160,18 @@ public abstract class Drawer<T>
     }
     
     protected static boolean drawLogo(int margin, Graphics g) {
-        int polytechX = getWindowHeight();
-        int polytechY = getWindowWidth() / 2 + 90;
-        int ucblX = margin;
-        int ucblY = getWindowWidth() / 2 + margin;
+        BufferedImage polytechImg = getLogoPolytechImage();
+        BufferedImage UCBLImg = getlogoUCBLImage();
         
-        g.drawImage(getLogoPolytechImage(), polytechX, polytechY, g.getClipBounds().width / 6, (int)((getLogoPolytechImage().getHeight() / (double)getLogoPolytechImage().getWidth()) * g.getClipBounds().height) / 4, null);
-        g.drawImage(getlogoUCBLImage(), ucblX, ucblY, g.getClipBounds().width / 4, (int) ((getlogoUCBLImage().getHeight() / (double)getlogoUCBLImage().getWidth()) * g.getClipBounds().height) / 2, null);
+        int localHeight = g.getClipBounds().height;
+        int localWidth = g.getClipBounds().width;
+        int polytechX = localWidth - polytechImg.getWidth()/3 - margin/2;
+        int polytechY = localHeight - polytechImg.getHeight()/4 - margin/2;
+        int ucblX = margin/2;
+        int ucblY = localHeight - UCBLImg.getHeight()/3 -margin/2;
+        
+        g.drawImage(polytechImg, polytechX, polytechY, g.getClipBounds().width / 5, (int)((polytechImg.getHeight() / (double)polytechImg.getWidth()) * g.getClipBounds().height) / 5, null);
+        g.drawImage(UCBLImg, ucblX, ucblY, g.getClipBounds().width / 3, (int) ((UCBLImg.getHeight() / (double)UCBLImg.getWidth()) * g.getClipBounds().height) / 3, null);
         
         return true;
     }

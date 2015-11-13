@@ -4,7 +4,6 @@ import model.serializable.XMLSerializable;
 import model.image.LocalImage;
 import model.image.Image;
 import java.io.File;
-import java.util.Comparator;
 
 
 public class Student implements XMLSerializable,Comparable<Student>
@@ -25,6 +24,7 @@ public class Student implements XMLSerializable,Comparable<Student>
         String[] names = file.getName().split("\\.");
         return names.length >= 3
                  && names[0].matches("^[0-9]+$");
+                 //TODO:  verifier regEx
                  //&& names[1].matches("^[a-zA-Z\\-\\_]+$")
                  //&& names[2].matches("^[a-zA-Z\\-\\_]+$");
     }
@@ -58,13 +58,6 @@ public class Student implements XMLSerializable,Comparable<Student>
         
         return xml;
     }
-    
-   /* public static Comparator<Student> StudentComparator = new Comparator<Student>(){
-        @Override
-        public int compare(Student s1, Student s2) {
-            
-        }
-    };*/
 
     @Override
     public int compareTo(Student t) {
