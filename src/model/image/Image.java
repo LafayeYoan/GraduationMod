@@ -34,7 +34,7 @@ public abstract class Image implements BinarySerializable
         sUID = BigInteger.ZERO;
     }
     
-    private static Collection<Image> images;
+    public static Collection<Image> images;
     public static Image getImageByID(BigInteger id)
     {
         return images.stream()

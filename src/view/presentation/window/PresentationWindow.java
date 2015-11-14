@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import model.ModelCollection;
 import view.presentation.Drawer;
+import view.presentation.slide.ConclusionSlide;
 import view.presentation.slide.SectionManager;
 import view.presentation.slide.Talk;
 import view.presentation.slide.Text;
@@ -69,7 +70,7 @@ public class PresentationWindow extends JFrame implements KeyListener
         SectionManager sm = new SectionManager(mc.getSections(), this, 2);
         nodes.add(sm);
         
-        nodes.add(new Text(mc.getDetails().computedCongratulationText(), this));
+        nodes.add(new ConclusionSlide(mc.getDetails(),this));
     }
     
     private final ArrayList<Drawer> nodes;
