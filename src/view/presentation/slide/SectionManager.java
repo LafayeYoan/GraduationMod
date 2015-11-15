@@ -201,8 +201,10 @@ public class SectionManager extends Drawer<Collection<model.model.Section>>
             int w = (int)(IMAGE_RATIO * IMAGE_H);
             g.drawImage(is.getStudent().picture.getImage(), centerX - w / 2, y - (3 * MARGIN), w, IMAGE_H, null);
             
-            String fullName = is.getStudent().firstName + " " + is.getStudent().name.toUpperCase();
-            g.drawString(fullName, (int)(centerX - g.getFontMetrics().getStringBounds(fullName, g).getWidth() / 2), y + IMAGE_H + GAP_IMAGE_TEXT + g.getFontMetrics().getHeight() - (3* MARGIN));
+            String firstName = is.getStudent().firstName; 
+            String lastName = is.getStudent().name.toUpperCase();
+            g.drawString(firstName, (int)(centerX - g.getFontMetrics().getStringBounds(firstName, g).getWidth() / 2), y + IMAGE_H + GAP_IMAGE_TEXT + g.getFontMetrics().getHeight() - (3 * MARGIN));
+            g.drawString(lastName, (int) (centerX - g.getFontMetrics().getStringBounds(lastName, g).getWidth() / 2), y + IMAGE_H + GAP_IMAGE_TEXT + g.getFontMetrics().getHeight() - MARGIN);
         }
         catch (IOException ex)
         { }
