@@ -126,7 +126,7 @@ public class EditorWindow extends FxmlRunner implements Initializable
             }
             catch (ParserConfigurationException | SAXException | IOException ex)
             {
-                // ERROR
+                System.out.println(ex);// ERROR
             }
         }
     }

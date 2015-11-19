@@ -193,6 +193,7 @@ public class ModelCollection
                         extractString(ns, "presentationText"),
                         extractString(ns, "sectionIntroText"),
                         extractString(ns, "congratulationText"),
+                        extractString(ns, "congratulationText2"),
                         extractImage(ns, "polytechImage")))
                 .findFirst()
                 .ifPresent(d -> model.details = d);
@@ -268,7 +269,7 @@ public class ModelCollection
         File data = new File(destination.getParentFile(), destination.getName() + ".data");
         data.delete();
         
-        /*Stream.concat(sections.stream().flatMap(s -> s.students.stream()).map(s -> s.picture), talks.stream().map(t -> t.picture))
+        Stream.concat(sections.stream().flatMap(s -> s.students.stream()).map(s -> s.picture), talks.stream().map(t -> t.picture))
                 .filter(p -> p != null)
                 .forEach(p ->
                 {
@@ -287,8 +288,8 @@ public class ModelCollection
                     }
                     catch (IOException ex)
                     { }
-                });*/
-                Image.images.stream()
+                });
+                /*Image.images.stream()
                 .forEach(s ->
                 {
                     // UID_SIZE | UID | DATA_SIZE | DATA...
@@ -305,7 +306,9 @@ public class ModelCollection
                         Files.write(data.toPath(), ds, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
                     }
                     catch (IOException ex)
-                    { }
-                });
+                    { 
+                        System.out.println(ex);
+                    }
+                });*/
     }
 }

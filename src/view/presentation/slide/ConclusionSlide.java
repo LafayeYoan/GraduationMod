@@ -41,7 +41,8 @@ public class ConclusionSlide extends Drawer<Details>{
         return image;
     }    
     private static final int IMAGE_MARGIN = 400;   
-
+    private static final int TEXT_ROW_SPACE = 5;
+        
     @Override
     public void draw(Graphics g)
     {                
@@ -55,8 +56,7 @@ public class ConclusionSlide extends Drawer<Details>{
         g.setColor(new Color(255, 255, 255, 255));
         g.drawString(getObject().computedCongratulationText(), getCenter(g, getObject().computedCongratulationText()), 150);
         
-        
-        // Draw image
+        /*// Draw image
         if(getImage() != null)
         {
             int imgh = (int)(g.getClipBounds().height-IMAGE_MARGIN);
@@ -66,6 +66,22 @@ public class ConclusionSlide extends Drawer<Details>{
             int imgy = g.getClipBounds().height/2 - imgh/2 + MARGIN;            
             
             g.drawImage(getImage(),imgx, imgy, imgw, imgh, null);
+        }*/
+        
+        int GAP_TITLE_TOP = 200;
+
+        g.setFont(g.getFont().deriveFont(75f / 1920 * g.getClipBounds().width));
+        g.setColor(new Color(0,0,0));
+
+        int yi = GAP_TITLE_TOP;
+        int gh = g.getFontMetrics().getHeight();
+        for(String s : splitToFit(getObject().congratulationText2, g, 0 , g.getClipBounds().width))
+        {
+            g.drawString(s, getCenter(g, s), yi + gh);
+            yi += gh + TEXT_ROW_SPACE;
         }
+        
+        
+        
     }
 }

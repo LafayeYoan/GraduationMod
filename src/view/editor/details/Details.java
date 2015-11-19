@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
@@ -43,7 +44,8 @@ public class Details extends FxmlElement
     @FXML private TextField year;
     @FXML private TextField sectionIntroText;
     @FXML private TextField presentationText;
-    @FXML private TextField polytechImage;
+    //@FXML private TextField polytechImage;
+    @FXML private TextArea congratulationText2;
     @FXML private TextField congratulationText;
     
     public model.model.Details getDetails()
@@ -58,10 +60,11 @@ public class Details extends FxmlElement
         sectionIntroText.setText(details.sectionIntroText);
         presentationText.setText(details.presentationText);
         congratulationText.setText(details.congratulationText);
-        polytechImage.setText(details.polytechImage == null ? "" : "Image présente en mémoire");
+        congratulationText2.setText(details.congratulationText2);
+        //polytechImage.setText(details.polytechImage == null ? "" : "Image présente en mémoire");
     }
     
-    @FXML protected void handleBrowse(ActionEvent event)
+    /*@FXML protected void handleBrowse(ActionEvent event)
     {
         FileChooser fc = new FileChooser();
         fc.setTitle("Sélectionnez une image");
@@ -72,7 +75,7 @@ public class Details extends FxmlElement
             polytechImage.setText(f.getPath());
             details.polytechImage = new LocalImage(f);
         }
-    }
+    }*/
     
     @FXML protected void handleYearChanged(KeyEvent event)
     {
@@ -98,5 +101,9 @@ public class Details extends FxmlElement
     @FXML protected void handleCongratulationTextChanged(KeyEvent event)
     {
         details.congratulationText = congratulationText.getText();
+    }
+    @FXML protected void handleCongratulationText2Changed(KeyEvent event)
+    {
+        details.congratulationText2 = congratulationText2.getText();
     }
 }

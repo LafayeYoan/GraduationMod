@@ -14,12 +14,14 @@ public class Details implements XMLSerializable
             String presentationText,
             String sectionIntroText,
             String congratulationText,
+            String congratulationText2,
             Image polytechImage)
     {
         this.year = year;
         this.presentationText = presentationText;
         this.sectionIntroText = sectionIntroText;
         this.congratulationText = congratulationText;
+        this.congratulationText2=congratulationText2;
         this.polytechImage = polytechImage;
     }
     
@@ -27,6 +29,7 @@ public class Details implements XMLSerializable
     public String presentationText;
     public String sectionIntroText;
     public String congratulationText;
+    public String congratulationText2;
     public Image polytechImage;
     
     public String computedPresentationText()
@@ -44,7 +47,7 @@ public class Details implements XMLSerializable
     
     public static Details createDefault(int year)
     {
-        return new Details(year, "Bienvenue à la Remise des Diplomes de " + YEAR_SYMBOL, "Début de la Remise des Diplômes de " + YEAR_SYMBOL, "BRAVO", null);
+        return new Details(year, "Bienvenue à la Remise des Diplomes de " + YEAR_SYMBOL, "Début de la Remise des Diplômes de " + YEAR_SYMBOL, "BRAVO", "",null);
     }
     public static Details createDefault()
     {
@@ -62,6 +65,7 @@ public class Details implements XMLSerializable
         xml += "<presentationText>" + presentationText + "</presentationText>";
         xml += "<sectionIntroText>" + sectionIntroText + "</sectionIntroText>";
         xml += "<congratulationText>" + congratulationText + "</congratulationText>";
+        xml += "<congratulationText2>" + congratulationText2 + "</congratulationText2>";
         
         if(polytechImage == null)
             xml += "<polytechImage/>";
