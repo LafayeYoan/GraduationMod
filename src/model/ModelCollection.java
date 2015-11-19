@@ -8,6 +8,8 @@ import model.image.Image;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
@@ -192,8 +194,8 @@ public class ModelCollection
                                 .orElseGet(() -> Calendar.getInstance().get(Calendar.YEAR)),
                         extractString(ns, "presentationText"),
                         extractString(ns, "sectionIntroText"),
+                        extractString(ns, "congratulationTitle"),
                         extractString(ns, "congratulationText"),
-                        extractString(ns, "congratulationText2"),
                         extractImage(ns, "polytechImage")))
                 .findFirst()
                 .ifPresent(d -> model.details = d);
@@ -244,7 +246,7 @@ public class ModelCollection
     }
     public void save(File destination) throws IOException
     {
-        String xml = "";
+        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
         
         xml += "<model>";
         
@@ -264,8 +266,12 @@ public class ModelCollection
         
         xml += "</model>";
         
-        Files.write(destination.toPath(), xml.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
-        
+        String xmlUTF8 = new String(xml.getBytes(),java.nio.charset.Charset.forName("UTF-8"));
+        try (PrintWriter writer = new PrintWriter(destination.getPath(), "UTF-8")) {
+            writer.print(xmlUTF8);
+            writer.close();
+        }
+        //Files.write(destination.toPath(), xmlUTF8.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
         File data = new File(destination.getParentFile(), destination.getName() + ".data");
         data.delete();
         
@@ -287,7 +293,9 @@ public class ModelCollection
                         Files.write(data.toPath(), ds, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
                     }
                     catch (IOException ex)
-                    { }
+                    {
+                        System.out.println(ex);
+                    }
                 });
                 /*Image.images.stream()
                 .forEach(s ->

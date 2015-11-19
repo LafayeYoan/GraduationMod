@@ -1,6 +1,9 @@
 package model.model;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.image.Image;
 import model.serializable.XMLSerializable;
 
@@ -13,23 +16,23 @@ public class Details implements XMLSerializable
             int year,
             String presentationText,
             String sectionIntroText,
+            String congratulationTitle,
             String congratulationText,
-            String congratulationText2,
             Image polytechImage)
     {
         this.year = year;
         this.presentationText = presentationText;
         this.sectionIntroText = sectionIntroText;
         this.congratulationText = congratulationText;
-        this.congratulationText2=congratulationText2;
+        this.congratulationTitle=congratulationTitle;
         this.polytechImage = polytechImage;
     }
     
     public int year;
     public String presentationText;
     public String sectionIntroText;
+    public String congratulationTitle;
     public String congratulationText;
-    public String congratulationText2;
     public Image polytechImage;
     
     public String computedPresentationText()
@@ -40,9 +43,9 @@ public class Details implements XMLSerializable
     {
         return sectionIntroText.replace(YEAR_SYMBOL, Integer.toString(year));
     }
-    public String computedCongratulationText()
+    public String computedCongratulationTitle()
     {
-        return congratulationText.replace(YEAR_SYMBOL, Integer.toString(year));
+        return congratulationTitle.replace(YEAR_SYMBOL, Integer.toString(year));
     }
     
     public static Details createDefault(int year)
@@ -57,23 +60,28 @@ public class Details implements XMLSerializable
     @Override
     public String toXML()
     {
-        String xml = "";
-        
-        xml += "<details>";
-        
-        xml += "<year>" + year + "</year>";
-        xml += "<presentationText>" + presentationText + "</presentationText>";
-        xml += "<sectionIntroText>" + sectionIntroText + "</sectionIntroText>";
-        xml += "<congratulationText>" + congratulationText + "</congratulationText>";
-        xml += "<congratulationText2>" + congratulationText2 + "</congratulationText2>";
-        
-        if(polytechImage == null)
-            xml += "<polytechImage/>";
-        else
-            xml += "<polytechImage>" + polytechImage.getID().toString(10) + "</polytechImage>";
-        
-        xml += "</details>";
-        
-        return xml;
+        try {
+            String xml = "";
+            
+            xml += "<details>";
+            
+            xml += "<year>" + year + "</year>";
+            xml += "<presentationText>" + presentationText + "</presentationText>";
+            xml += "<sectionIntroText>" + sectionIntroText + "</sectionIntroText>";
+            xml += "<congratulationTitle>" + congratulationTitle+ "</congratulationTitle>";
+            xml += "<congratulationText>" + congratulationText + "</congratulationText>";
+            
+            if(polytechImage == null)
+                xml += "<polytechImage/>";
+            else
+                xml += "<polytechImage>" + polytechImage.getID().toString(10) + "</polytechImage>";
+            
+            xml += "</details>";
+            
+            return new String(xml.getBytes("UTF-8"));
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Details.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

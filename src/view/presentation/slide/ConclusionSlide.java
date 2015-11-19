@@ -54,7 +54,7 @@ public class ConclusionSlide extends Drawer<Details>{
         // Draw title
         g.setFont(g.getFont().deriveFont(200f / 1920 * g.getClipBounds().width));
         g.setColor(new Color(255, 255, 255, 255));
-        g.drawString(getObject().computedCongratulationText(), getCenter(g, getObject().computedCongratulationText()), 150);
+        g.drawString(getObject().computedCongratulationTitle(), getCenter(g, getObject().computedCongratulationTitle()), 150);
         
         /*// Draw image
         if(getImage() != null)
@@ -75,7 +75,7 @@ public class ConclusionSlide extends Drawer<Details>{
 
         int yi = GAP_TITLE_TOP;
         int gh = g.getFontMetrics().getHeight();
-        for(String s : splitToFit(getObject().congratulationText2, g, 0 , g.getClipBounds().width))
+        for(String s : splitToFit(getObject().congratulationText, g, 0 , g.getClipBounds().width))
         {
             g.drawString(s, getCenter(g, s), yi + gh);
             yi += gh + TEXT_ROW_SPACE;

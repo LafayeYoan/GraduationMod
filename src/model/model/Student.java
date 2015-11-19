@@ -4,6 +4,9 @@ import model.serializable.XMLSerializable;
 import model.image.LocalImage;
 import model.image.Image;
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Student implements XMLSerializable,Comparable<Student>
@@ -32,7 +35,13 @@ public class Student implements XMLSerializable,Comparable<Student>
     public static Student createFromFile(File file)
     {
         String[] names = file.getName().split("\\.");
-        return new Student(names[2], names[1], new LocalImage(file));
+        /*try{
+            String name = new String(names[2].getBytes("UTF-8"));
+            String firstname = new String(names[1].getBytes("UTF-8"));
+            
+        return new Student(name, firstname, new LocalImage(file));
+        }catch(Exception ex){}*/
+        return new Student(names[2], names[1],new LocalImage(file));
     }
     public static Student createDefault()
     {
@@ -56,6 +65,11 @@ public class Student implements XMLSerializable,Comparable<Student>
         
         xml += "</student>";
         
+        /*try{
+            return new String(xml.getBytes("UTF-8"));
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Details.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
         return xml;
     }
 

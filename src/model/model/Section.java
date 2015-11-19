@@ -1,8 +1,11 @@
 package model.model;
 
+import java.io.UnsupportedEncodingException;
 import model.serializable.XMLSerializable;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Section implements XMLSerializable
@@ -63,7 +66,11 @@ public class Section implements XMLSerializable
         xml += "<positionLeft>" + positionLeft + "</positionLeft>";
         
         xml += "</section>";
-        
-        return xml;
+        try{
+            return new String(xml.getBytes("UTF-8"));
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Details.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

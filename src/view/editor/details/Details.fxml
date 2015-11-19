@@ -34,14 +34,14 @@
             <TitledPane collapsible="false" >
                 <text>Titre de félicitation</text>
                 <content>
-                    <TextField fx:id="congratulationText" onKeyReleased="#handleCongratulationTextChanged" />
+                    <TextField fx:id="congratulationTitle" onKeyReleased="#handleCongratulationTitleChanged" />
                 </content>
             </TitledPane>
             
             <TitledPane collapsible="false" >
                         <text>Texte de félicitation</text>
                         <content>
-                            <TextArea fx:id="congratulationText2" onKeyReleased="#handleCongratulationText2Changed" />
+                            <TextArea fx:id="congratulationText" onKeyReleased="#handleCongratulationTextChanged" />
                         </content>
             </TitledPane>
             <!--

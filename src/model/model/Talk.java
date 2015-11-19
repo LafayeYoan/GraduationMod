@@ -1,5 +1,8 @@
 package model.model;
 
+import java.io.UnsupportedEncodingException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.serializable.XMLSerializable;
 import model.image.Image;
 
@@ -39,6 +42,11 @@ public class Talk implements XMLSerializable
         
         xml += "</talk>";
         
-        return xml;
+        try{
+            return new String(xml.getBytes("UTF-8"));
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Details.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

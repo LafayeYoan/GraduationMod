@@ -109,6 +109,10 @@ public class SectionManager extends Drawer<Collection<model.model.Section>>
     
     protected void draw(Graphics g, int index, InnerSection is)
     {
+        
+        if(is.getStudent() == null){
+            return;
+        }
         //Introduction Student
         if(is.getStudent().name.equals(Section.SECTION_INTRODUCTION_KEY)){
             int locationX = (g.getClipBounds().width - MARGIN * 2) / 2 * index + MARGIN;

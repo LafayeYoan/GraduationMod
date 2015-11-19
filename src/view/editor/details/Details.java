@@ -45,8 +45,8 @@ public class Details extends FxmlElement
     @FXML private TextField sectionIntroText;
     @FXML private TextField presentationText;
     //@FXML private TextField polytechImage;
-    @FXML private TextArea congratulationText2;
-    @FXML private TextField congratulationText;
+    @FXML private TextField congratulationTitle;
+    @FXML private TextArea congratulationText;
     
     public model.model.Details getDetails()
     {
@@ -60,7 +60,7 @@ public class Details extends FxmlElement
         sectionIntroText.setText(details.sectionIntroText);
         presentationText.setText(details.presentationText);
         congratulationText.setText(details.congratulationText);
-        congratulationText2.setText(details.congratulationText2);
+        congratulationTitle.setText(details.congratulationTitle);
         //polytechImage.setText(details.polytechImage == null ? "" : "Image présente en mémoire");
     }
     
@@ -102,8 +102,8 @@ public class Details extends FxmlElement
     {
         details.congratulationText = congratulationText.getText();
     }
-    @FXML protected void handleCongratulationText2Changed(KeyEvent event)
+    @FXML protected void handleCongratulationTitleChanged(KeyEvent event)
     {
-        details.congratulationText2 = congratulationText2.getText();
+        details.congratulationTitle = congratulationTitle.getText();
     }
 }
