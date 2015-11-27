@@ -151,14 +151,6 @@ public abstract class Drawer<T>
         return logoUCBLImage;
     }
     
-    protected static int getWindowHeight() {
-        return  (int)dimension.getHeight();
-    }
-    
-    protected static int getWindowWidth() {
-        return (int)dimension.getWidth();
-    }
-    
     protected static boolean drawLogo(int margin, Graphics g) {
         BufferedImage polytechImg = getLogoPolytechImage();
         BufferedImage UCBLImg = getlogoUCBLImage();
