@@ -1,10 +1,8 @@
 package view.presentation;
 
-import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -109,8 +107,7 @@ public abstract class Drawer<T>
     
     private static BufferedImage backgroundTopImage = null;
     private static BufferedImage logoPolytechImage = null;
-    private static BufferedImage logoUCBLImage = null;
-    private static Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+    private static BufferedImage logoUCBLImage = null;    
     
     protected static BufferedImage getBackgroundTopImage()
     {
